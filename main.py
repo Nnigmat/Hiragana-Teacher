@@ -43,18 +43,16 @@ def get_input():
 if __name__ == '__main__':
     print_table()
     get_input()
-    system('clear')
     # print('\n'.join(['-'*35 for i in range(4)]))
-    i = 1
     globals()['first_sign'] = 0 if not reverse else 1
     globals()['second_sign'] = 1 if not reverse else 0
     again = True
     while again:
-
+        system('clear')
+        i = 1
         hira_temp = []
-        for i in range(rows):
-            hira_temp.append(hiragana[i].copy())
-
+        for j in range(rows):
+            hira_temp.append(hiragana[j].copy())
         while any(hira_temp):
             row = randint(lower_bound, len(hira_temp) - 1)
             sign = hira_temp[row].pop(randint(0, len(hira_temp[row]) - 1))
