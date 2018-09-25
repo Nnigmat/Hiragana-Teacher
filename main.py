@@ -50,7 +50,7 @@ if __name__ == '__main__':
             hiragana.pop(row)
         print(i, sign[0], end='')
         input()
-        print('\x1b[1A\x1b[2K', i, sign[0], sign[1])
+        print('\x1b[1A\x1b[2K', str(i)+'.', sign[0], sign[1])
         i += 1
 
 
