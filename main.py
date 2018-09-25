@@ -13,7 +13,7 @@ hiragana = [
         [('ma', 'ま'), ('mi', 'み'), ('mu', 'む'), ('me', 'め'), ('mo', 'も')],
         [('ya', 'や'), ('yu', 'ゆ'), ('yo', 'よ')],
         [('ra', 'ら'), ('ri', 'り'), ('ru', 'る'), ('re', 'れ'), ('ro', 'ろ')],
-        [('wa', 'わ'), ('o/wo', 'わ')],
+        [('wa', 'わ'), ('o/wo', 'を')],
         [('n', 'ん')]
         ]
 
@@ -47,17 +47,22 @@ if __name__ == '__main__':
     # print('\n'.join(['-'*35 for i in range(4)]))
     hiragana = hiragana[0: rows]
     i = 1
-    first_sign = 0 if not reverse else 1
-    second_sign = 1 if not reverse else 0
-    while any(hiragana):
-        row = randint(lower_bound, len(hiragana) - 1)
-        sign = hiragana[row].pop(randint(0, len(hiragana[row]) - 1))
-        if hiragana[row] == []:
-            hiragana.pop(row)
+    globals()['first_sign'] = 0 if not reverse else 1
+    globals()['second_sign'] = 1 if not reverse else 0
+    again = True
+    while again:
+        while any(hiragana):
+            row = randint(lower_bound, len(hiragana) - 1)
+            sign = hiragana[row].pop(randint(0, len(hiragana[row]) - 1))
+            if hiragana[row] == []:
+                hiragana.pop(row)
 
-        print(i, sign[first_sign], end='')
-        input()
-        print('\x1b[1A\x1b[2K', str(i)+'.', sign[first_sign], sign[second_sign])
-        i += 1
+            print(i, sign[first_sign], end='')
+            input()
+            print('\x1b[1A\x1b[2K', str(i)+'.', sign[first_sign], sign[second_sign])
+            i += 1
+        print('Again? (Y/n)', end='')
+        again = True if input() != 'n' else False
+    print('Bye!')
 
 
