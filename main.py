@@ -19,6 +19,7 @@ hiragana = [
 
 rows = len(hiragana)
 lower_bound = 0
+reverse = False
 
 def print_table():
     i = 1
@@ -32,6 +33,9 @@ def print_table():
 def get_input():
     print('Enter number of rows you want to learn:', end=' ')
     inp = input().strip('\n')
+    if '-r' in inp:
+        globals()['reverse'] = True
+        inp = inp.split(' ')[0]
     if inp != '':
         globals()['rows'] = int(inp) if int(inp) <= 11 else rows
 
@@ -43,14 +47,17 @@ if __name__ == '__main__':
     # print('\n'.join(['-'*35 for i in range(4)]))
     hiragana = hiragana[0: rows]
     i = 1
+    first_sign = 0 if not reverse else 1
+    second_sign = 1 if not reverse else 0
     while any(hiragana):
         row = randint(lower_bound, len(hiragana) - 1)
         sign = hiragana[row].pop(randint(0, len(hiragana[row]) - 1))
         if hiragana[row] == []:
             hiragana.pop(row)
-        print(i, sign[0], end='')
+
+        print(i, sign[first_sign], end='')
         input()
-        print('\x1b[1A\x1b[2K', str(i)+'.', sign[0], sign[1])
+        print('\x1b[1A\x1b[2K', str(i)+'.', sign[first_sign], sign[second_sign])
         i += 1
 
 
