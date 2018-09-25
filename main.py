@@ -45,17 +45,21 @@ if __name__ == '__main__':
     get_input()
     system('clear')
     # print('\n'.join(['-'*35 for i in range(4)]))
-    hiragana = hiragana[0: rows]
     i = 1
     globals()['first_sign'] = 0 if not reverse else 1
     globals()['second_sign'] = 1 if not reverse else 0
     again = True
     while again:
-        while any(hiragana):
-            row = randint(lower_bound, len(hiragana) - 1)
-            sign = hiragana[row].pop(randint(0, len(hiragana[row]) - 1))
-            if hiragana[row] == []:
-                hiragana.pop(row)
+
+        hira_temp = []
+        for i in range(rows):
+            hira_temp.append(hiragana[i].copy())
+
+        while any(hira_temp):
+            row = randint(lower_bound, len(hira_temp) - 1)
+            sign = hira_temp[row].pop(randint(0, len(hira_temp[row]) - 1))
+            if hira_temp[row] == []:
+                hira_temp.pop(row)
 
             print(i, sign[first_sign], end='')
             input()
