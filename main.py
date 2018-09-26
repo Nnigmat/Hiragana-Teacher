@@ -58,7 +58,7 @@ def main_block():
             input()
             print('\x1b[1A\x1b[2K', str(i)+'.', sign[first_sign], sign[second_sign])
             i += 1
-        print('Again? (Y/n)', end='')
+        print('Again? (Y/n)', end=' ')
         again = True if input() != 'n' else False
     print('Bye!')
 
@@ -70,4 +70,3 @@ if __name__ == '__main__':
     globals()['first_sign'] = 0 if not reverse else 1
     globals()['second_sign'] = 1 if not reverse else 0
     main_block()
-
