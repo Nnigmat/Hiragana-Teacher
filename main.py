@@ -1,6 +1,7 @@
 from random import randint
 from time import sleep
 from os import system
+import signal
 
 
 hiragana = [
@@ -39,13 +40,7 @@ def get_input():
     if inp != '':
         globals()['rows'] = int(inp) if int(inp) <= 11 else rows
 
-
-if __name__ == '__main__':
-    print_table()
-    get_input()
-    # print('\n'.join(['-'*35 for i in range(4)]))
-    globals()['first_sign'] = 0 if not reverse else 1
-    globals()['second_sign'] = 1 if not reverse else 0
+def main_block():
     again = True
     while again:
         system('clear')
@@ -67,4 +62,12 @@ if __name__ == '__main__':
         again = True if input() != 'n' else False
     print('Bye!')
 
+
+if __name__ == '__main__':
+    print_table()
+    get_input()
+    # print('\n'.join(['-'*35 for i in range(4)]))
+    globals()['first_sign'] = 0 if not reverse else 1
+    globals()['second_sign'] = 1 if not reverse else 0
+    main_block()
 
